@@ -1,0 +1,37 @@
+﻿  main.cpp
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(66,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(67,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(68,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(105,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(106,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(107,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+  Generating code
+  2 of 191 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  openCvProject1.vcxproj -> C:\Users\anjci\source\repos\openCvProject1\x64\Release\openCvProject1.exe

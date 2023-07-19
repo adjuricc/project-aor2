@@ -10,16 +10,15 @@
 #include <intrin.h>
 #include "Pixel.h"
 
-
 using namespace cv;
 
 int get_cache_size() {
     int regs[4] = { 0 };
     __cpuid(regs, 0x80000006);
-    int cacheLineSize = (regs[2] & 0xFF);
-    printf("Cache Line Size: %d bytes\n", cacheLineSize);
+    int cache_line_size = (regs[2] & 0xFF);
+    printf("Cache Line Size: %d bytes\n", cache_line_size);
 
-    return cacheLineSize;
+    return cache_line_size;
 }
 
 Pixel find_max(int rows, int cols, cv::Mat img) {
@@ -37,24 +36,25 @@ Pixel find_max(int rows, int cols, cv::Mat img) {
             }
         }
     }
+
     return Pixel(max_blue, max_green, max_red);
 }
 
-
-
-
 cv::Mat apply_filter(cv::Mat img, std::vector<std::vector<float>> kernel, int n, int rows, int cols) {
     cv::Mat tmp = img.clone();
-    cv::Mat filteredImage = tmp.clone();
-    int kernelHalfSize = n / 2;
-    for (int i = -kernelHalfSize; i < rows - kernelHalfSize; i++) {
-        for (int j = -kernelHalfSize; j < cols - kernelHalfSize; j++) {
+    cv::Mat filtered_image = tmp.clone();
+
+    int kernel_half_size = n / 2;
+
+    for (int i = -kernel_half_size; i < rows - kernel_half_size; i++) {
+        for (int j = -kernel_half_size; j < cols - kernel_half_size; j++) {
             int sumR = 0, sumG = 0, sumB = 0;
             
             for (int k = 0; k < n; k++) {
                 for (int l = 0; l < n; l++) {
-                    if (i + k >= 0 && i + k < rows && j + l >= 0 && j + l < cols) {  //don't try to process pixels off the endge of the map
+                    if (i + k >= 0 && i + k < rows && j + l >= 0 && j + l < cols) {  
                         cv::Vec3b pixel_tmp = tmp.at<cv::Vec3b>(i + k, j + l);
+
                         sumR += pixel_tmp[2] * kernel[k][l];
                         sumG += pixel_tmp[1] * kernel[k][l];
                         sumB += pixel_tmp[0] * kernel[k][l];
@@ -67,25 +67,27 @@ cv::Mat apply_filter(cv::Mat img, std::vector<std::vector<float>> kernel, int n,
             sumB = std::min(std::max(sumB, 0), 255);
 
             if(i >= 0 && j >= 0)
-                filteredImage.at<cv::Vec3b>(i, j) = cv::Vec3b(sumB, sumG, sumR);
+                filtered_image.at<cv::Vec3b>(i, j) = cv::Vec3b(sumB, sumG, sumR);
 
         }
     }
-    return filteredImage;
+    return filtered_image;
 }
 
 cv::Mat apply_filter_optimized(cv::Mat img, std::vector<std::vector<float>> kernel, int n, int rows, int cols) {
     cv::Mat tmp = img.clone();
-    cv::Mat filteredImage = tmp.clone();
-    int kernelHalfSize = n / 2;
-    int cache_line_size = get_cache_size();
-    int blockSize = cache_line_size / sizeof(cv::Vec3b);
-    blockSize = std::min(blockSize, n);
+    cv::Mat filtered_image = tmp.clone();
 
-    for (int i = -kernelHalfSize; i < rows - kernelHalfSize; i += blockSize) {
-        for (int j = -kernelHalfSize; j < cols - kernelHalfSize; j += blockSize) {
-            for (int bi = i; bi < i + blockSize && bi < rows - kernelHalfSize; bi++) {
-                for (int bj = j; bj < j + blockSize && bj < cols - kernelHalfSize; bj++) {
+    int kernel_half_size = n / 2;
+
+    int cache_line_size = get_cache_size();
+    int block_size = cache_line_size / sizeof(cv::Vec3b);
+    block_size = std::min(block_size, n);
+
+    for (int i = -kernel_half_size; i < rows - kernel_half_size; i += block_size) {
+        for (int j = -kernel_half_size; j < cols - kernel_half_size; j += block_size) {
+            for (int bi = i; bi < i + block_size && bi < rows - kernel_half_size; bi++) {
+                for (int bj = j; bj < j + block_size && bj < cols - kernel_half_size; bj++) {
                     int sumR = 0, sumG = 0, sumB = 0;
 
                     for (int k = 0; k < n; k++) {
@@ -104,19 +106,16 @@ cv::Mat apply_filter_optimized(cv::Mat img, std::vector<std::vector<float>> kern
                     sumB = std::min(std::max(sumB, 0), 255);
 
                     if (bi >= 0 && bj >= 0)
-                        filteredImage.at<cv::Vec3b>(bi, bj) = cv::Vec3b(sumB, sumG, sumR);
+                        filtered_image.at<cv::Vec3b>(bi, bj) = cv::Vec3b(sumB, sumG, sumR);
                 }
             }
         }
     }
-    return filteredImage;
+    return filtered_image;
 }
 
 int main() {
-    //std::cout << "cache line size: " << get_cache_size();
 	cv::Mat img = cv::imread("C:/Users/anjci/OneDrive/Documents/home_page_monet.jpg");
-    //cv::Mat kernel = (cv::Mat_<float>(3, 3) << -1, -2, -1, 0, 0, 0, 1, 2, 1);
-    //cv::Mat kernel;
     int n;
 
     std::cout << "Insert kernel filter size: ";
@@ -125,8 +124,6 @@ int main() {
     std::vector<std::vector<float>> kernel(n, std::vector<float>(n));
 
     std::cout << "Enter the elements of the matrix:\n";
-
-    // Read each element of the matrix
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             std::cout << "Enter element at position (" << i << ", " << j << "): ";
@@ -134,37 +131,29 @@ int main() {
         }
     }
 
-	if (img.empty())
-	{
+	if (img.empty()){
 		std::cout << "Failed to load the image." << std::endl;
 		return -1;
 	}
+
     int rows = img.rows;
     int cols = img.cols;
 
-    // Create a new image to store the result
     cv::Mat result(img.size(), img.type());
 
-    Pixel max_pixel = find_max(rows, cols, img);
+    //Pixel max_pixel = find_max(rows, cols, img);
 
     cv::Mat filtered_img = apply_filter(img, kernel, n, rows, cols);
     cv::imshow("Filtered", filtered_img);
     cv::waitKey(0);
 
-
     cv::Mat filtered_img_opt = apply_filter_optimized(img, kernel, n, rows, cols);
-
-
     cv::imshow("Filtered opt", filtered_img_opt);
     cv::waitKey(0);
 
-
     // Iterate over each pixel
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols; j++)
-        {
-            // Access pixel values at (i, j)
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
             cv::Vec3b pixel = img.at<cv::Vec3b>(i, j);
 
             // Create Pixel objects
@@ -188,16 +177,11 @@ int main() {
             //resultPixel.inversion(max_pixel);
             resultPixel.grayscale();
 
-            // Update the result image with the modified pixel values
             result.at<cv::Vec3b>(i, j) = cv::Vec3b(resultPixel.getBlue(), resultPixel.getGreen(), resultPixel.getRed());
         }
     }
 
-    // Display the result image
     cv::imshow("Result", result);
-	//namedWindow("First open cv app", WINDOW_AUTOSIZE);
-	//cv::imshow("first opencv app", img);
-	//cv::moveWindow("First open cv app", 0, 45);
 	cv::waitKey(0);
 	cv::destroyAllWindows();
 

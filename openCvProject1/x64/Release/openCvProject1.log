@@ -1,37 +1,37 @@
 ﻿  main.cpp
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(58,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(62,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(59,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(63,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(60,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(64,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(95,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(101,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(96,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(102,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(97,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(103,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
   Generating code
-  2 of 195 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
+  5 of 194 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   openCvProject1.vcxproj -> C:\Users\anjci\source\repos\openCvProject1\x64\Release\openCvProject1.exe

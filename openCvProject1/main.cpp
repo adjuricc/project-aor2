@@ -10,20 +10,14 @@
 #include <intrin.h>
 #include "Pixel.h"
 
+
 using namespace cv;
 
-unsigned int get_cache_size() {
-    unsigned int cacheLineSize = 0;
-
-    // Check if CPUID instruction is supported
-    int info[4] = { 0 };
-    __cpuid(info, 0);
-    if (info[0] >= 1) {
-        __cpuidex(info, 1, 0);
-
-        // Extract cache line size from the CPUID result
-        cacheLineSize = (info[1] >> 8) & 0xFF;
-    }
+int get_cache_size() {
+    int regs[4] = { 0 };
+    __cpuid(regs, 0x80000006);
+    int cacheLineSize = (regs[2] & 0xFF);
+    printf("Cache Line Size: %d bytes\n", cacheLineSize);
 
     return cacheLineSize;
 }
@@ -50,8 +44,6 @@ Pixel find_max(int rows, int cols, cv::Mat img) {
 
 
 cv::Mat apply_filter(cv::Mat img, std::vector<std::vector<float>> kernel, int n, int rows, int cols) {
-
-   
     cv::Mat tmp = img.clone();
     cv::Mat filteredImage = tmp.clone();
     int kernelHalfSize = n / 2;
@@ -86,11 +78,9 @@ cv::Mat apply_filter_optimized(cv::Mat img, std::vector<std::vector<float>> kern
     cv::Mat tmp = img.clone();
     cv::Mat filteredImage = tmp.clone();
     int kernelHalfSize = n / 2;
-    int cacheLineSize = get_cache_size();
-
-    // Calculate the block size based on cache line size
-    int blockSize = cacheLineSize / sizeof(cv::Vec3b);
-    blockSize = std::min(blockSize, n); // Limit block size to the kernel size
+    int cache_line_size = get_cache_size();
+    int blockSize = cache_line_size / sizeof(cv::Vec3b);
+    blockSize = std::min(blockSize, n);
 
     for (int i = -kernelHalfSize; i < rows - kernelHalfSize; i += blockSize) {
         for (int j = -kernelHalfSize; j < cols - kernelHalfSize; j += blockSize) {
@@ -123,12 +113,11 @@ cv::Mat apply_filter_optimized(cv::Mat img, std::vector<std::vector<float>> kern
 }
 
 int main() {
-    std::cout << "cache line size: " << get_cache_size();
+    //std::cout << "cache line size: " << get_cache_size();
 	cv::Mat img = cv::imread("C:/Users/anjci/OneDrive/Documents/home_page_monet.jpg");
     //cv::Mat kernel = (cv::Mat_<float>(3, 3) << -1, -2, -1, 0, 0, 0, 1, 2, 1);
     //cv::Mat kernel;
     int n;
-    
 
     std::cout << "Insert kernel filter size: ";
     std::cin >> n;
@@ -158,9 +147,15 @@ int main() {
 
     Pixel max_pixel = find_max(rows, cols, img);
 
-    cv::Mat filtered_img = apply_filter_optimized(img, kernel, n, rows, cols);
-
+    cv::Mat filtered_img = apply_filter(img, kernel, n, rows, cols);
     cv::imshow("Filtered", filtered_img);
+    cv::waitKey(0);
+
+
+    cv::Mat filtered_img_opt = apply_filter_optimized(img, kernel, n, rows, cols);
+
+
+    cv::imshow("Filtered opt", filtered_img_opt);
     cv::waitKey(0);
 
 

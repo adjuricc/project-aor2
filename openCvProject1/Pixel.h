@@ -51,7 +51,7 @@ public:
 	void min(int cnst);
 	void max(int cnst);
 	
-	void inversion(Pixel pixel);
+	void inversion();
 	void grayscale();
 	void filter(cv::Mat& filter);
 };

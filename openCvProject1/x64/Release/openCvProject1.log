@@ -1,36 +1,67 @@
 ﻿  main.cpp
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(62,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(565,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(566,30): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(567,28): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(639,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(640,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,89): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,71): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(641,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(977,40): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(978,40): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(979,40): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(1015,52): warning C4244: 'argument': conversion from 'uint16_t' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=uchar
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(1015,45): warning C4244: 'argument': conversion from 'uint16_t' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=uchar
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(1015,38): warning C4244: 'argument': conversion from 'uint16_t' to '_Tp', possible loss of data
+          with
+          [
+              _Tp=uchar
+          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(1075,50): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(63,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(1076,50): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(64,46): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(1077,50): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
           with
           [
               _Ty=float
           ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(101,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(102,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=float
-          ]
-C:\Users\anjci\source\repos\openCvProject1\openCvProject1\main.cpp(103,54): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
-          with
-          [
-              _Ty=float
-          ]
+C:\Users\anjci\source\repos\openCvProject1\openCvProject1\ResultImage.h(1107,35): warning C4101: 'A': unreferenced local variable
   Generating code
-  5 of 194 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
+  1 of 256 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

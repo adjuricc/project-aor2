@@ -50,9 +50,16 @@ void Pixel::power(int cnst){
 }
 
 void Pixel::log(){
+	
 	this->red = std::log(this->red + 1);
 	this->green = std::log(this->green + 1);
 	this->blue = std::log(this->blue + 1);
+	
+	//this->red = 255 * (std::log(1 + this->red)) / std::log(1 + max_pixel.red));
+	/*int p_black = 245; int p_white = 254;
+	this->red = 255 * ((std::log(this->red - p_black)) / (std::log(p_white - p_black)));
+	this->green = 255 * ((std::log(this->green - p_black)) / (std::log(p_white - p_black)));
+	this->blue = 255 * ((std::log(this->blue - p_black)) / (std::log(p_white - p_black)));*/
 }
 
 void Pixel::abs(){
@@ -73,10 +80,15 @@ void Pixel::max(int cnst){
 	this->blue = std::max(this->blue, cnst);
 }
 
-void Pixel::inversion(Pixel pixel){
+void Pixel::inversion(){
+	/*
 	this->red = pixel.getRed() - this->red;
 	this->green = pixel.getGreen() - this->green;
 	this->blue = pixel.getBlue() - this->blue;
+	*/
+	this->red = 255 - this->red;
+	this->green = 255 - this->green;
+	this->blue = 255 - this->blue;
 }
 
 void Pixel::grayscale(){
